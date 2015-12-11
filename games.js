@@ -42,10 +42,6 @@ if (Meteor.isServer) {
 
       if(WhiteDeck.find().count() === 0){
           var playdecks = whiteCardJson.whiteCards
-          // for (var i = 0; i < playdecks.length; i++) {
-          //   console.log(playdecks[i])
-          //   WhiteDeck.insert(playdecks[i])
-          // }
           for (playdeck in playdecks) {
               WhiteDeck.insert(playdecks[playdeck])
           }

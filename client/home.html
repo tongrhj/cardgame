@@ -1,10 +1,32 @@
 <template name="home">
   {{> signupLogin}}
   {{#if currentUser}}
+    {{> gameList}}
     {{> userList}}
     {{> blackCardList}}
     {{> whiteCardList}}
   {{/if}}
+</template>
+
+<template name="gameList">
+<h1>Games</h1>
+<ul>
+  {{#each games}}
+    {{> gameItem}}
+  {{/each}}
+</ul>
+</template>
+
+<template name="gameItem">
+  <li>
+    <a href="/game/{{_id}}">Game with {{otherPlayer}}
+      <span>
+        {{#if inProgress}}
+          {{started}}
+        {{/if}}
+      </span>
+    </a>
+  </li>
 </template>
 
 <template name="userList">
@@ -17,6 +39,10 @@
       {{/each}}
     </ul>
   </div>
+</template>
+
+<template name="userItem">
+  <li><button>{{username}}</button></li>
 </template>
 
 <template name="blackCardList">
@@ -33,8 +59,4 @@
     <li>{{@index}}: {{text}}</li>
     {{/each}}
   </ul>
-</template>
-
-<template name="userItem">
-  <li><button>{{username}}</button></li>
 </template>
