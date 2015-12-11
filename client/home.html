@@ -2,8 +2,9 @@
   {{> signupLogin}}
   {{#if currentUser}}
     {{> userList}}
+    {{> blackCardList}}
+    {{> whiteCardList}}
   {{/if}}
-  {{> cardList}}
 </template>
 
 <template name="userList">
@@ -18,10 +19,18 @@
   </div>
 </template>
 
-<template name="cardList">
+<template name="blackCardList">
   <ul>
-    {{#each deck}}
-      <li>{{deck}}</li>
+    {{#each blackdeck}}
+      <li>{{@index}}: {{text}}</li>
+    {{/each}}
+  </ul>
+</template>
+
+<template name="whiteCardList">
+  <ul>
+    {{#each whitedeck}}
+    <li>{{@index}}: {{text}}</li>
     {{/each}}
   </ul>
 </template>

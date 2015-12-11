@@ -5,18 +5,13 @@ GameFactory = {}
 // theBlackArray = myjson.blackCards
 // theWhiteArray = myjson.whiteCards
 // }
-// Meteor.call('getData', function(err, res){
-//   console.log(res.content)
-// })
 
 GameFactory.createGame = function (playerIds) {
   var blackDeck = createBlackDeck()
-  // var whiteDeck = createWhiteDeck()
   var players = createPlayers(playerIds)
 
   // GameFactory.dealPlayers(players, deck)
   var tableBlack = dealBlack(blackDeck)
-  // var tableWhite = dealWhite(whiteDeck)
 
   return {
     blackDeck: blackDeck,
@@ -27,10 +22,6 @@ GameFactory.createGame = function (playerIds) {
     started: new Date()
   }
 }
-
-// GameFactory.dealPlayers(players, deck){
-//
-// }
 
 function dealBlack(blackDeck){
   var c = blackDeck.shift.bind(blackDeck)
@@ -58,14 +49,14 @@ function createBlackDeck () {
       // do nothing
     } else {
       cards.push(theBlackArray[i])
-      console.log(theBlackArray[i])
+      // console.log(theBlackArray[i])
       // var randomTopic = theBlack[randBlackNum].text
       // console.log(randomTopic)
     }
   }
 
   return _.shuffle(cards)
-  console.log(cards);
+  // console.log(cards);
 }
 
 // function createWhiteDeck () {

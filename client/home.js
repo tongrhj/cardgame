@@ -14,10 +14,17 @@ Template.userList.helpers({
   }
 })
 
-Template.cardList.helpers({
-  deck: function () {
-    // console.log(Deck);
-    return Deck.find()
+Template.blackCardList.helpers({
+  blackdeck: function () {
+    console.log(BlackDeck.find().fetch())
+    return BlackDeck.find().fetch()
+  }
+})
+
+Template.whiteCardList.helpers({
+  whitedeck: function () {
+    console.log(WhiteDeck.find().fetch())
+    return WhiteDeck.find().fetch()
   }
 })
 
