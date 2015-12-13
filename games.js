@@ -23,12 +23,11 @@ Meteor.methods({
   takeTurn: function (gameId, id, card) {
     var game = Games.findOne(gameId)
     var choices = game.players[id].choices
-    console.log('the table is: ', game.whitetable)
 
-    console.log('the current round: ', game.round)
+    console.log('current round: ', game.round)
     console.log('current players id: ', game.players[id])
-    console.log(game.currentTurn);
-    console.log(Meteor.userId());
+    console.log('current turn is: ', game.currentTurn);
+
     // if (game.currentTurn[0] === id && Turns.inHand(hand, card))
     // if not the current user's turn OR if the player has no moves left for the round
     // if (game.currentTurn[0] !== id || !move > 0) return
@@ -58,8 +57,11 @@ Meteor.methods({
         function resetCards(){
           game.table.shift(game.deck[0])
           game.table.push(game.deck[Math.floor(Math.random() * game.deck.length)])
-
-
+          game.whitetable.splice(0, 3
+            , game.whitedeck[Math.floor(Math.random() * game.whitedeck.length)]
+            , game.whitedeck[Math.floor(Math.random() * game.whitedeck.length)]
+            , game.whitedeck[Math.floor(Math.random() * game.whitedeck.length)]
+          )
         }
 
         function scoringRound () {
