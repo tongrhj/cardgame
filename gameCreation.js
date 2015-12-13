@@ -9,6 +9,8 @@ theBlackArray = cardJson.blackCards
 theWhiteArray = whiteCardJson.whiteCards
 
 GameFactory.createGame = function (playerIds) {
+  var moves = 2
+  var round = 0
   var deck = createDeck()
   var whitedeck = createWhiteDeck()
   var players = createPlayers(playerIds)
@@ -18,6 +20,8 @@ GameFactory.createGame = function (playerIds) {
   var whitetable = dealWhiteTable(whitedeck)
 
   return {
+    moves: moves,
+    round: round,
     deck: deck,
     whitedeck: whitedeck,
     players: players,
@@ -36,7 +40,7 @@ function dealTable(deck){
 
 function dealWhiteTable(whitedeck){
   var c = whitedeck.shift.bind(whitedeck)
-  return [c(), c(), c(), c(), c()]
+  return [c(), c(), c()]
 }
 
 function createPlayers (ids) {
@@ -44,8 +48,10 @@ function createPlayers (ids) {
 
   ids.forEach(function (id) {
     o[id] = {
-      vote: 0,
-      score: 0
+      move: 2,
+      score: 0,
+      round: 0,
+      choices: []
     }
   })
 
@@ -71,7 +77,8 @@ function createWhiteDeck () {
   for (var i = 0; i < theWhiteArray.length; i++) {
     cards.push({
       name: theWhiteArray[i].text,
-      counter: 0
+      counter: 0,
+      voted: []
     })
   }
   return _.shuffle(cards)

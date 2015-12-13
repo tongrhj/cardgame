@@ -3,8 +3,8 @@
   {{#if currentUser}}
     {{> gameList}}
     {{> userList}}
-    {{> blackCardList}}
-    {{> whiteCardList}}
+    <!-- {{> blackCardList}} -->
+    <!-- {{> whiteCardList}} -->
   {{/if}}
 </template>
 
@@ -45,18 +45,18 @@
   <li><button>{{username}}</button></li>
 </template>
 
-<template name="blackCardList">
+<!-- <template name="blackCardList">
   <ul>
     {{#each blackdeck}}
       <li>{{@index}}: {{text}}</li>
     {{/each}}
   </ul>
-</template>
+</template> -->
 
-<template name="whiteCardList">
+<!-- <template name="whiteCardList">
   <ul>
     {{#each whitedeck}}
     <li>{{@index}}: {{text}}</li>
     {{/each}}
   </ul>
-</template>
+</template> -->

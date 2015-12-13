@@ -30,17 +30,17 @@ Template.userList.helpers({
   }
 })
 
-Template.blackCardList.helpers({
-  blackdeck: function () {
-    return BlackDeck.find().fetch()
-  }
-})
+// Template.blackCardList.helpers({
+//   blackdeck: function () {
+//     return BlackDeck.find().fetch()
+//   }
+// })
 
-Template.whiteCardList.helpers({
-  whitedeck: function () {
-    return WhiteDeck.find().fetch()
-  }
-})
+// Template.whiteCardList.helpers({
+//   whitedeck: function () {
+//     return WhiteDeck.find().fetch()
+//   }
+// })
 
 Template.userItem.events({
   'click button': function (evt, template) {
