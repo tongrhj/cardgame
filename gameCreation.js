@@ -10,7 +10,7 @@ theWhiteArray = whiteCardJson.whiteCards
 
 GameFactory.createGame = function (playerIds) {
   var moves = 2
-  var round = 0
+  var round = 1
   var deck = createDeck()
   var whitedeck = createWhiteDeck()
   var players = createPlayers(playerIds)

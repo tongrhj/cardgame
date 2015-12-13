@@ -54,26 +54,31 @@ Meteor.methods({
           otherPlayer.choices = []
         }
 
+        // function resetCards(){
+        //
+        // }
+
         function scoringRound () {
           if (mePlayer.choices[1] == otherPlayer.choices[0]) {
             mePlayer.score += 1
-            console.log('i scored: ', mePlayer.score);
+            console.log('I scored: ' + mePlayer.score);
           } else {
             mePlayer.score += 0
-            console.log('i didnt score: ', mePlayer.score);
+            console.log('I didnt score: ' + mePlayer.score);
           }
 
           if (otherPlayer.choices[1] == mePlayer.choices[0]) {
             otherPlayer.score += 1
-            console.log('opponent scored: ', otherPlayer.score);
+            console.log('Opponent scored: ' + otherPlayer.score);
 
           } else {
             otherPlayer.score += 0
-            console.log('opponent didnt score:', otherPlayer.score);
+            console.log('Opponent didnt score: ' + otherPlayer.score);
           }
         }
         scoringRound()
         resetChoices()
+        // resetCards()
       } else {
         // not 2 rounds yet, no scoring will be done
       }
