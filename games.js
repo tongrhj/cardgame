@@ -23,6 +23,7 @@ Meteor.methods({
   takeTurn: function (gameId, id, card) {
     var game = Games.findOne(gameId)
     var choices = game.players[id].choices
+    console.log('the table is: ', game.whitetable)
 
     console.log('the current round: ', game.round)
     console.log('current players id: ', game.players[id])
@@ -54,9 +55,12 @@ Meteor.methods({
           otherPlayer.choices = []
         }
 
-        // function resetCards(){
-        //
-        // }
+        function resetCards(){
+          game.table.shift(game.deck[0])
+          game.table.push(game.deck[Math.floor(Math.random() * game.deck.length)])
+
+
+        }
 
         function scoringRound () {
           if (mePlayer.choices[1] == otherPlayer.choices[0]) {
@@ -70,7 +74,6 @@ Meteor.methods({
           if (otherPlayer.choices[1] == mePlayer.choices[0]) {
             otherPlayer.score += 1
             console.log('Opponent scored: ' + otherPlayer.score);
-
           } else {
             otherPlayer.score += 0
             console.log('Opponent didnt score: ' + otherPlayer.score);
@@ -78,7 +81,8 @@ Meteor.methods({
         }
         scoringRound()
         resetChoices()
-        // resetCards()
+        resetCards()
+
       } else {
         // not 2 rounds yet, no scoring will be done
       }

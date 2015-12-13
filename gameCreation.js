@@ -33,6 +33,14 @@ GameFactory.createGame = function (playerIds) {
   }
 }
 
+// GameFactory.dealPlayers(players, deck) {
+//   for (var i = 0; i < 3; i++) {
+//     Object.keys(players).forEach(function (id) {
+//       player[id].hand.push(deck.shift())
+//     })
+//   }
+// }
+
 function dealTable(deck){
   var c = deck.shift.bind(deck)
   return [c()]
