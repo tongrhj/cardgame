@@ -1,38 +1,59 @@
+<head>
+  <title>Cards For Assembly - A card game built with Meteor</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+</head>
+
 <template name="home">
   {{> signupLogin}}
   {{#if currentUser}}
-    {{> gameList}}
-    {{> userList}}
+  <div class="lobby">
+    <div class="container">
+      {{> gameList}}
+      {{> userList}}
+    </div>
+  </div>
     <!-- {{> blackCardList}} -->
     <!-- {{> whiteCardList}} -->
   {{/if}}
 </template>
 
 <template name="gameList">
-<h1>Games</h1>
-<ul>
-  {{#each games}}
-    {{> gameItem}}
-  {{/each}}
-</ul>
+  <div class="gamelist col-sm-8">
+    <h1>Lobby</h1>
+    <ul>
+      {{#each games}}
+        {{> gameItem}}
+      {{/each}}
+    </ul>
+
+    <h1>Completed Games</h1>
+    <ul class="completed">
+      {{#each completedGames}}
+        {{> gameItem}}
+      {{/each}}
+    </ul>
+  </div>
 </template>
 
 <template name="gameItem">
   <li>
-    <a href="/game/{{_id}}">Game with {{otherPlayer}}
-      <span>
+    <a href="/game/{{_id}}">
+      <p>
+        Game with {{otherPlayer}}
         {{#if inProgress}}
-          {{started}}
+          started {{started}}
+        {{else}}
+          finished {{finished}} <span>{{message}}</span>
         {{/if}}
-      </span>
+      </p>
     </a>
   </li>
 </template>
 
 <template name="userList">
-  <div class="column">
-    <h1>Users</h1>
-    <p>Choose another user to start a game with them:</p>
+  <div class="sidebar col-sm-4">
+    <h2>Available Players</h2>
+    <p>Start a game with any users below:</p>
     <ul>
       {{#each users}}
         {{> userItem}}

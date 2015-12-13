@@ -84,7 +84,6 @@ Meteor.methods({
         scoringRound()
         resetChoices()
         resetCards()
-
       } else {
         // not 2 rounds yet, no scoring will be done
       }
@@ -94,13 +93,8 @@ Meteor.methods({
       return
     }
 
-    // card.counter = card.counter + 1
-    // card.voted.push(game.players[id])
-    // game.currentTurn.unshift(game.currentTurn.pop())
-
     if (game.round >= 20) {
-      // console.log('yay!')
-      // scoreGame(game) // score the game
+      scoreGame(game) // score the game
     }
     Games.update(gameId, game)
   }

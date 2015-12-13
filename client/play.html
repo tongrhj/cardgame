@@ -1,23 +1,46 @@
 <template name="play">
   {{> signupLogin}}
-  {{#if currentUser}}
-    {{> status}}
-    {{#if inProgress}}
-      {{> table}}
-      {{> whitetable}}
-      <!-- {{> hand}} -->
-    {{/if}}
-    <!-- {{> pile}} -->
-  {{/if}}
+  <div class="room">
+    <div class="container">
+      {{#if currentUser}}
+        {{> status}}
+        {{#unless inProgress}}
+          {{> score}}
+        {{/unless}}
+        {{#if inProgress}}
+          {{> table}}
+          {{> whitetable}}
+        {{/if}}
+      {{/if}}
+    </div>
+  </div>
 </template>
 
 <template name="status">
   <p><a href="/">&larr; Home</a></p>
   <h2>Game between you and {{otherPlayer.username}} {{#if inProgress}} {{#if yourTurn}} (Your Turn) {{/if}} {{/if}}</h2>
+  <h3>Pick a card that suits the topic, then pick another to guess what the opponent may pick.</h3>
+</template>
+
+<template name="score">
+  <h1>Game Over! {{message}}</h1>
+
+  <table>
+    <tr>
+      <th></th>
+      <th>You</th>
+      <th>{{otherPlayer.username}}</th>
+    </tr>
+    <tr>
+      <td>Correct Guesses</td>
+      <td>{{player.score}}</td>
+      <td>{{otherPlayer.score}}</td>
+    </tr>
+  </table>
 </template>
 
 <template name="table">
-  <div id="table">
+  <div class="blackcards">
     <h2>Topic</h2>
     {{#each table}}
     <div class="card">
@@ -28,7 +51,7 @@
 </template>
 
 <template name="whitetable">
-  <div id="whitetable">
+  <div class="whitecards">
     <h2>Cards</h2>
     {{#each whitetable}}
     <div class="card">
@@ -38,26 +61,3 @@
     {{/each}}
   </div>
 </template>
-
-<!-- <template name="hand">
-  <div id="hand">
-    <h2>Hand</h2>
-    {{#each player.hand}}
-    <div class="card {{suit}}">
-      <div>{{name}}</div>
-      <div>{{suit}}</div>
-    </div>
-    {{/each}}
-  </div>
-</template> -->
-
-<!-- <template name="pile">
-  <div id="pile">
-    <h2>Collected Cards</h2>
-    <ul>
-      {{#each player.pile}}
-        <li>{{name}} of {{suit}}</li>
-      {{/each}}
-    </ul>
-  </div>
-</template> -->
